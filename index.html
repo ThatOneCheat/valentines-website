@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Week 💕</title>
+    <meta name="description"
+        content="A special Valentine's Week experience crafted with love — five layers of beauty, memories, and a heartfelt letter.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;500&family=Caveat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Global Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Shooting Stars Canvas -->
+    <canvas id="shootingStarCanvas"></canvas>
+
+    <!-- Music Toggle -->
+    <button id="musicToggle" class="music-toggle" aria-label="Toggle ambient music">
+        <span class="music-icon music-icon--off">🔇</span>
+        <span class="music-icon music-icon--on">🎵</span>
+        <div class="music-pulse"></div>
+    </button>
+
+    <!-- Navigation Dots -->
+    <nav id="navDots" class="nav-dots">
+        <button class="dot active" data-page="0" aria-label="Welcome">
+            <span class="dot-label">Welcome</span>
+        </button>
+        <button class="dot" data-page="1" aria-label="Our Story">
+            <span class="dot-label">Our Story</span>
+        </button>
+        <button class="dot" data-page="2" aria-label="Why You">
+            <span class="dot-label">Why You</span>
+        </button>
+        <button class="dot" data-page="3" aria-label="Stars">
+            <span class="dot-label">Stars</span>
+        </button>
+        <button class="dot" data-page="4" aria-label="Letter">
+            <span class="dot-label">Letter</span>
+        </button>
+    </nav>
+
+    <!-- Page Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-bar__fill" id="progressFill"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- LAYER 1 — Welcome Gate                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="page0" class="page page--welcome active">
+        <!-- Animated gradient orbs -->
+        <div class="orb orb--1"></div>
+        <div class="orb orb--2"></div>
+        <div class="orb orb--3"></div>
+
+        <div class="welcome__content">
+            <!-- 3D Rotating Heart -->
+            <div class="heart-3d-container">
+                <div class="heart-3d">
+                    <div class="heart-3d__face heart-3d__face--front">♥</div>
+                    <div class="heart-3d__face heart-3d__face--back">♥</div>
+                    <div class="heart-3d__glow"></div>
+                </div>
+            </div>
+
+            <p class="welcome__subtitle anim-fadeUp" style="animation-delay:.5s">
+                <span class="sparkle-text">✦ A Journey Through ✦</span>
+            </p>
+
+            <!-- Typewriter title -->
+            <h1 class="welcome__title anim-fadeUp" style="animation-delay:.8s">
+                <span class="typewriter" id="mainTitle"></span>
+                <span class="typewriter-cursor">|</span>
+            </h1>
+
+            <p class="welcome__tagline anim-fadeUp" style="animation-delay:1.5s">
+                Seven days of love, wrapped in one unforgettable experience
+            </p>
+
+            <!-- Valentine's Day Countdown -->
+            <div class="countdown anim-fadeUp" style="animation-delay:1.8s">
+                <div class="countdown__item">
+                    <span class="countdown__number" id="countDays">00</span>
+                    <span class="countdown__label">Days</span>
+                </div>
+                <div class="countdown__separator">:</div>
+                <div class="countdown__item">
+                    <span class="countdown__number" id="countHours">00</span>
+                    <span class="countdown__label">Hours</span>
+                </div>
+                <div class="countdown__separator">:</div>
+                <div class="countdown__item">
+                    <span class="countdown__number" id="countMins">00</span>
+                    <span class="countdown__label">Minutes</span>
+                </div>
+                <div class="countdown__separator">:</div>
+                <div class="countdown__item">
+                    <span class="countdown__number" id="countSecs">00</span>
+                    <span class="countdown__label">Seconds</span>
+                </div>
+            </div>
+
+            <button class="btn-magic anim-fadeUp" style="animation-delay:2.2s" onclick="goToPage(1)">
+                <span class="btn-magic__text">Begin the Journey</span>
+                <span class="btn-magic__icon">→</span>
+                <div class="btn-magic__shimmer"></div>
+                <div class="btn-magic__particles" id="btnParticles"></div>
+            </button>
+        </div>
+
+        <!-- Floating flowers — more dynamic swirl -->
+        <div class="floating-flower f1">🌹</div>
+        <div class="floating-flower f2">🌸</div>
+        <div class="floating-flower f3">💮</div>
+        <div class="floating-flower f4">🌺</div>
+        <div class="floating-flower f5">🌷</div>
+        <div class="floating-flower f6">🌹</div>
+        <div class="floating-flower f7">🌸</div>
+        <div class="floating-flower f8">💐</div>
+        <div class="floating-flower f9">🪷</div>
+        <div class="floating-flower f10">🌻</div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- LAYER 2 — Our Love Story (Timeline)         -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="page1" class="page page--story">
+        <div class="orb orb--4"></div>
+        <div class="orb orb--5"></div>
+
+        <div class="story__content">
+            <h2 class="section-title anim-target">
+                <span class="title-reveal">Our Love Story</span>
+            </h2>
+            <p class="section-subtitle anim-target">Every love story is beautiful, but ours is my favourite</p>
+
+            <!-- Animated story path -->
+            <div class="story-timeline">
+                <svg class="story-path" viewBox="0 0 600 700" preserveAspectRatio="xMidYMid meet">
+                    <path class="story-path__line"
+                        d="M 50 40 C 200 40, 200 180, 300 180 S 500 180, 550 320 C 550 460, 400 460, 300 460 S 50 460, 50 600 C 50 660, 200 660, 300 660"
+                        fill="none" stroke="url(#pathGrad)" stroke-width="3" stroke-dasharray="8 6" />
+                    <defs>
+                        <linearGradient id="pathGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#ff6b9d" />
+                            <stop offset="50%" stop-color="#c44569" />
+                            <stop offset="100%" stop-color="#ff6b9d" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <!-- Story Milestones (spaced out) -->
+                <div class="milestone anim-target" style="--delay:.15s; --pos-top:2%; --pos-left:2%;">
+                    <div class="milestone__dot">
+                        <div class="milestone__pulse"></div>
+                    </div>
+                    <div class="milestone__card milestone__card--right">
+                        <span class="milestone__emoji">✨</span>
+                        <h4>The Spark</h4>
+                        <p>The first time our eyes met, something shifted in the universe. I felt it before I understood
+                            it.</p>
+                    </div>
+                </div>
+
+                <div class="milestone anim-target" style="--delay:.35s; --pos-top:26%; --pos-left:55%;">
+                    <div class="milestone__dot">
+                        <div class="milestone__pulse"></div>
+                    </div>
+                    <div class="milestone__card milestone__card--left">
+                        <span class="milestone__emoji">💬</span>
+                        <h4>First Conversations</h4>
+                        <p>Hours felt like minutes. We talked about everything and nothing — and it all felt like magic.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="milestone anim-target" style="--delay:.55s; --pos-top:52%; --pos-left:5%;">
+                    <div class="milestone__dot">
+                        <div class="milestone__pulse"></div>
+                    </div>
+                    <div class="milestone__card milestone__card--right">
+                        <span class="milestone__emoji">🦋</span>
+                        <h4>Butterflies</h4>
+                        <p>That nervous-excited feeling every time my phone buzzed with your name. I was already
+                            falling.</p>
+                    </div>
+                </div>
+
+                <div class="milestone anim-target" style="--delay:.75s; --pos-top:78%; --pos-left:45%;">
+                    <div class="milestone__dot">
+                        <div class="milestone__pulse"></div>
+                    </div>
+                    <div class="milestone__card milestone__card--left">
+                        <span class="milestone__emoji">❤️‍🔥</span>
+                        <h4>Falling Deep</h4>
+                        <p>No more pretending it was casual. This was real. You became my favourite person in the world.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-magic anim-target" style="--delay:.9s" onclick="goToPage(2)">
+                <span class="btn-magic__text">Discover Why You</span>
+                <span class="btn-magic__icon">→</span>
+                <div class="btn-magic__shimmer"></div>
+            </button>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- LAYER 3 — Why You (Enhanced Flip Cards)     -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="page2" class="page page--whyyou">
+        <div class="orb orb--6"></div>
+
+        <div class="whyyou__content">
+            <h2 class="section-title anim-target">
+                <span class="title-reveal">Why You?</span>
+            </h2>
+            <p class="section-subtitle anim-target">Tap each card to uncover a truth 💕</p>
+
+            <div class="flip-grid">
+                <div class="flip-card anim-target" style="--delay:.15s" onclick="flipCard(this)">
+                    <div class="flip-card__inner">
+                        <div class="flip-card__front">
+                            <div class="flip-card__number">01</div>
+                            <span class="flip-card__emoji">✨</span>
+                            <p>Your Smile</p>
+                            <div class="flip-card__hint">tap to reveal</div>
+                        </div>
+                        <div class="flip-card__back">
+                            <p>Your smile lights up every room you walk into — it's my favourite sight in the whole
+                                world. It makes bad days disappear.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card anim-target" style="--delay:.25s" onclick="flipCard(this)">
+                    <div class="flip-card__inner">
+                        <div class="flip-card__front">
+                            <div class="flip-card__number">02</div>
+                            <span class="flip-card__emoji">🌙</span>
+                            <p>Your Presence</p>
+                            <div class="flip-card__hint">tap to reveal</div>
+                        </div>
+                        <div class="flip-card__back">
+                            <p>You make the ordinary feel extraordinary — even silence feels perfect when I'm with you.
+                                Comfort I can't find anywhere else.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card anim-target" style="--delay:.35s" onclick="flipCard(this)">
+                    <div class="flip-card__inner">
+                        <div class="flip-card__front">
+                            <div class="flip-card__number">03</div>
+                            <span class="flip-card__emoji">🦋</span>
+                            <p>Your Belief</p>
+                            <div class="flip-card__hint">tap to reveal</div>
+                        </div>
+                        <div class="flip-card__back">
+                            <p>You believed in me when I forgot how to believe in myself. That's a gift I'll never stop
+                                treasuring. You made me stronger.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card anim-target" style="--delay:.45s" onclick="flipCard(this)">
+                    <div class="flip-card__inner">
+                        <div class="flip-card__front">
+                            <div class="flip-card__number">04</div>
+                            <span class="flip-card__emoji">🔥</span>
+                            <p>Your Passion</p>
+                            <div class="flip-card__hint">tap to reveal</div>
+                        </div>
+                        <div class="flip-card__back">
+                            <p>Your passion for the things you love is contagious — it makes me want to be a better
+                                person every single day.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card anim-target" style="--delay:.55s" onclick="flipCard(this)">
+                    <div class="flip-card__inner">
+                        <div class="flip-card__front">
+                            <div class="flip-card__number">05</div>
+                            <span class="flip-card__emoji">🌊</span>
+                            <p>My Peace</p>
+                            <div class="flip-card__hint">tap to reveal</div>
+                        </div>
+                        <div class="flip-card__back">
+                            <p>You are my calm in every storm. My peace. My home. Wherever you are, that's where I
+                                belong completely.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card anim-target" style="--delay:.65s" onclick="flipCard(this)">
+                    <div class="flip-card__inner">
+                        <div class="flip-card__front">
+                            <div class="flip-card__number">06</div>
+                            <span class="flip-card__emoji">💎</span>
+                            <p>Your Soul</p>
+                            <div class="flip-card__hint">tap to reveal</div>
+                        </div>
+                        <div class="flip-card__back">
+                            <p>You are rare. Not just beautiful on the outside, but profoundly, breathtakingly beautiful
+                                within. You're everything.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-magic anim-target" style="--delay:.75s" onclick="goToPage(3)">
+                <span class="btn-magic__text">Enter the Night Sky</span>
+                <span class="btn-magic__icon">→</span>
+                <div class="btn-magic__shimmer"></div>
+            </button>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- LAYER 4 — Our Constellation                 -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="page3" class="page page--constellation">
+        <canvas id="starCanvas"></canvas>
+        <div class="aurora"></div>
+        <div class="aurora aurora--2"></div>
+
+        <div class="constellation__content">
+            <h2 class="section-title section-title--light anim-target">
+                <span class="title-reveal title-reveal--light">Our Constellation</span>
+            </h2>
+            <p class="section-subtitle section-subtitle--light anim-target">Every great love story is written in the
+                stars</p>
+
+            <!-- Romantic quote centerpiece -->
+            <div class="constellation__quote anim-target" style="--delay:.15s">
+                <span class="constellation__quote-mark">"</span>
+                <p class="constellation__quote-text">I have loved you in infinite forms, infinite times, and will love
+                    you forever more.</p>
+                <span class="constellation__quote-author">— Written in our stars</span>
+            </div>
+
+            <div class="constellation__moments">
+                <div class="moment-bubble anim-target" style="--delay:.25s">
+                    <div class="moment-bubble__glow"></div>
+                    <div class="moment-bubble__ring"></div>
+                    <span class="moment-bubble__icon">🌟</span>
+                    <p>The first time we talked, I felt butterflies I didn't expect. Your voice stayed in my mind like a
+                        <em>favourite melody on repeat</em>.
+                    </p>
+                </div>
+                <div class="moment-bubble anim-target" style="--delay:.35s">
+                    <div class="moment-bubble__glow"></div>
+                    <div class="moment-bubble__ring"></div>
+                    <span class="moment-bubble__icon">🎶</span>
+                    <p>That one song that always makes me think of you — I play it on loop and each beat carries the
+                        <em>warmth of every memory</em> we share.
+                    </p>
+                </div>
+                <div class="moment-bubble anim-target" style="--delay:.45s">
+                    <div class="moment-bubble__glow"></div>
+                    <div class="moment-bubble__ring"></div>
+                    <span class="moment-bubble__icon">☕</span>
+                    <p>Those late-night conversations where hours felt like minutes. We'd talk until the world went
+                        quiet, lost in our <em>own little universe</em>.</p>
+                </div>
+                <div class="moment-bubble anim-target" style="--delay:.55s">
+                    <div class="moment-bubble__glow"></div>
+                    <div class="moment-bubble__ring"></div>
+                    <span class="moment-bubble__icon">💫</span>
+                    <p>Every little inside joke we share — the ones nobody else would understand but make us laugh until
+                        we <em>can't breathe</em>.</p>
+                </div>
+                <div class="moment-bubble anim-target" style="--delay:.65s">
+                    <div class="moment-bubble__glow"></div>
+                    <div class="moment-bubble__ring"></div>
+                    <span class="moment-bubble__icon">🌙</span>
+                    <p>Those quiet moments where no words were needed — just your presence was enough to make the whole
+                        world feel <em>safe and warm</em>.</p>
+                </div>
+                <div class="moment-bubble anim-target" style="--delay:.75s">
+                    <div class="moment-bubble__glow"></div>
+                    <div class="moment-bubble__ring"></div>
+                    <span class="moment-bubble__icon">🌅</span>
+                    <p>The moment I realized you weren't just someone — you were <em>the one</em>. My heart chose you
+                        before my mind even caught up.</p>
+                </div>
+            </div>
+
+            <button class="btn-magic btn-magic--light anim-target" style="--delay:.9s" onclick="goToPage(4)">
+                <span class="btn-magic__text">Read My Letter</span>
+                <span class="btn-magic__icon">→</span>
+                <div class="btn-magic__shimmer"></div>
+            </button>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- LAYER 5 — The Letter                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="page4" class="page page--letter">
+        <div class="letter__sparkles"></div>
+        <div class="orb orb--7"></div>
+
+        <div class="letter__content">
+            <h2 class="section-title anim-target">
+                <span class="title-reveal">A Letter For You</span>
+            </h2>
+            <p class="section-subtitle anim-target">Click the envelope to open it 💌</p>
+
+            <!-- Enhanced Envelope with wax seal -->
+            <div class="envelope-wrapper anim-target" style="--delay:.3s" id="envelopeWrapper">
+                <div class="envelope" id="envelope" onclick="openEnvelope()">
+                    <div class="envelope__shadow"></div>
+                    <div class="envelope__flap"></div>
+                    <div class="envelope__body">
+                        <div class="envelope__liner"></div>
+                    </div>
+                    <!-- Wax Seal -->
+                    <div class="wax-seal">
+                        <span>♥</span>
+                    </div>
+                    <div class="envelope__float-text">click me</div>
+                </div>
+            </div>
+
+            <!-- Unfolding Letter -->
+            <div class="letter-paper" id="letterPaper">
+                <div class="letter-paper__fold letter-paper__fold--top" id="foldTop">
+                    <div class="fold-content"></div>
+                </div>
+                <div class="letter-paper__main" id="letterMain">
+                    <div class="letter-text" id="letterText">
+                        <p class="letter-greeting">My Dearest,</p>
+                        <p>I've been sitting here, trying to find the right words — and honestly, no combination of
+                            letters feels big enough for what you mean to me. But here goes.</p>
+                        <p>You came into my life like a quiet sunrise — no thunder, no drama — just a slow, warm light
+                            that made everything brighter. I didn't even realize how grey my world was until you
+                            coloured it in. Every laugh we've shared, every silly argument over nothing, every moment of
+                            comfortable silence — they're all stitched into who I am now.</p>
+                        <p>You're not just someone I love. You're my favourite thought at 2 AM. You're the reason I
+                            smile at my phone like an idiot. You're the person I want to tell everything to — the big
+                            things and the completely pointless things. You're my calm, my chaos, and my favourite kind
+                            of beautiful.</p>
+                        <p>I don't need a perfect love story. I just need ours — messy, real, and entirely us.</p>
+                        <p>This Valentine's Week, I just wanted you to know: you are loved. Deeply. Madly. In a
+                            "I'd-choose-you-in-every-universe" kind of way.</p>
+                        <p class="letter-closing">Forever & Always,</p>
+                        <p class="letter-signature">Yours ♥</p>
+                    </div>
+                </div>
+                <div class="letter-paper__fold letter-paper__fold--bottom" id="foldBottom">
+                    <div class="fold-content"></div>
+                </div>
+            </div>
+            <!-- Back to top (Inline) -->
+            <button class="btn-backtop" id="btnBackTop" onclick="goToPage(0)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                </svg>
+                <span>Relive the Journey</span>
+            </button>
+        </div>
+
+        <!-- Back to top -->
+
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
